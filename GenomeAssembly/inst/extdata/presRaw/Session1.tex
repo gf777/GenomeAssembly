@@ -41,55 +41,6 @@
   pdfcreator={LaTeX via pandoc}}
 \urlstyle{same} % disable monospaced font for URLs
 \usepackage[margin=1in]{geometry}
-\usepackage{color}
-\usepackage{fancyvrb}
-\newcommand{\VerbBar}{|}
-\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
-\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
-% Add ',fontsize=\small' for more characters per line
-\usepackage{framed}
-\definecolor{shadecolor}{RGB}{248,248,248}
-\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
-\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
-\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
-\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
-\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
-\newcommand{\BuiltInTok}[1]{#1}
-\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
-\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
-\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
-\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
-\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
-\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
-\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
-\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
-\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
-\newcommand{\ExtensionTok}[1]{#1}
-\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
-\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
-\newcommand{\ImportTok}[1]{#1}
-\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
-\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
-\newcommand{\NormalTok}[1]{#1}
-\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
-\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
-\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
-\newcommand{\RegionMarkerTok}[1]{#1}
-\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
-\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
-\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
-\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
-\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
-\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
-\usepackage{longtable,booktabs}
-% Correct order of tables after \paragraph or \subparagraph
-\usepackage{etoolbox}
-\makeatletter
-\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
-\makeatother
-% Allow footnotes in longtable head/foot
-\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
-\makesavenoteenv{longtable}
 \usepackage{graphicx,grffile}
 \makeatletter
 \def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
@@ -119,171 +70,95 @@
 \setcounter{tocdepth}{2}
 \tableofcontents
 }
-\hypertarget{genome-assembly-session1}{%
-\section{Genome Assembly (session1)}\label{genome-assembly-session1}}
+\hypertarget{an-introduction-to-genome-assembly}{%
+\section{An introduction to genome
+assembly}\label{an-introduction-to-genome-assembly}}
 
-\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+\hypertarget{principles-and-practicalities-of-assembling-evaluating-and-using-a-reference-genome}{%
+\paragraph{Principles and practicalities of assembling, evaluating and
+using a reference
+genome}\label{principles-and-practicalities-of-assembling-evaluating-and-using-a-reference-genome}}
+
+\leavevmode\hypertarget{hello}{}%
+Giulio Formenti, Ph.D.\\
+Laboratory of Neurogenetics of Language\\
+Vertebrate Genome Laboratory\\
+The Rockefeller University\\
+\href{mailto:gformenti@rockefeller.edu}{\nolinkurl{gformenti@rockefeller.edu}}
+
+\textbf{In collaboration with the Vertebrate Genomes Laboratory}
+
+\emph{March 22nd \& 25th - Monday \& Thursday}
+
+\includegraphics[width=0.3\textwidth,height=\textheight]{../imgs/VGL_logo.png}
+\includegraphics[width=0.15\textwidth,height=\textheight]{../imgs/RU_logo.png}
 
 \hypertarget{overview}{%
 \subsection{Overview}\label{overview}}
 
-??We often put an overview slide that links to the various parts of the
-course content to make it easy to navigate i.e.~this one for intro to
-r??
-
 \begin{itemize}
 \tightlist
 \item
-  \href{https://rockefelleruniversity.github.io/Intro_To_R_1Day/r_course/presentations/singlepage/introToR_Session1.html\#set-up}{Set
-  up}
+  \href{https://docs.conda.io/projects/conda/en/latest/user-guide/getting-started.html}{Introduction
+  to Conda}
 \item
-  \href{https://rockefelleruniversity.github.io/Intro_To_R_1Day/r_course/presentations/singlepage/introToR_Session1.html\#background-to-r}{Background
-  to R}
-\item
-  \href{https://rockefelleruniversity.github.io/Intro_To_R_1Day/r_course/presentations/singlepage/introToR_Session1.html\#data_types_in_r}{Data
-  types in R}
-\item
-  \href{https://rockefelleruniversity.github.io/Intro_To_R_1Day/r_course/presentations/singlepage/introToR_Session1.html\#reading-and-writing-data-in-r}{Reading
-  and writing in R}
+  \href{https://snakemake.readthedocs.io/en/stable/}{Introduction to
+  Snakemake}
 \end{itemize}
 
 \hypertarget{materials}{%
 \subsection{Materials}\label{materials}}
 
-??We try to denote each major section of content with these title slides
-(see above for set up). The hierarchy will help with the different
-versions of the teaching content i.e.~slides and single page.??
-
-?? Materials just gives the links to download the package Just ensure
-links are up to date??
-
-All prerequisites, links to material and slides for this course can be
-found on github.
-
 \begin{itemize}
 \tightlist
 \item
-  \href{https://rockefelleruniversity.github.io/Intro_To_R_1Day/}{Intro\_To\_R\_1}
-\end{itemize}
-
-Or can be downloaded as a zip archive from here.
-
-\begin{itemize}
-\tightlist
+  \href{https://git.imp.fu-berlin.de/cmazzoni/genome_evaluation_snakemake}{GEP
+  - Genome evaluation pipeline}
 \item
-  \href{https://github.com/rockefelleruniversity/Intro_To_R_1Day/zipball/master}{Download
-  zip}
+  Path on RU HPC to test data: /fakepath/to/data
 \end{itemize}
 
-\hypertarget{set-the-working-directory}{%
-\subsection{Set the Working directory}\label{set-the-working-directory}}
+\hypertarget{the-vertebrate-genomes-project}{%
+\subsection{The Vertebrate Genomes
+Project}\label{the-vertebrate-genomes-project}}
 
-Before running any of the code in the practicals or slides we need to
-set the working directory to the folder we unarchived.
+\includegraphics[width=0.3\textwidth,height=\textheight]{../imgs/VGP_phases.png}
+\includegraphics[width=0.6\textwidth,height=\textheight]{../imgs/VGP_map.png}
 
-You may navigate to the unarchived RU\_Course\_help folder in the
-Rstudio menu.
+\href{https://vertebrategenomesproject.org/}{VGP website}\\
+\includegraphics[width=0.3\textwidth,height=\textheight]{../imgs/VGP_logo.png}
 
-\textbf{Session -\textgreater{} Set Working Directory -\textgreater{}
-Choose Directory}
+\hypertarget{main-international-endeavours}{%
+\subsection{Main international
+endeavours}\label{main-international-endeavours}}
 
-or in the console.
+\begin{figure}
+\centering
+\includegraphics[width=0.3\textwidth,height=\textheight]{../imgs/B10K_logo.png}
+\caption{B10K logo}
+\end{figure}
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{setwd}\NormalTok{(}\StringTok{"/PathToMyDownload/RU_Course_template/r_course"}\NormalTok{)}
-\CommentTok{# e.g. setwd('~/Downloads/Intro_To_R_1Day/r_course')}
-\end{Highlighting}
-\end{Shaded}
+\begin{figure}
+\centering
+\includegraphics[width=0.3\textwidth,height=\textheight]{../imgs/dToL_logo.png}
+\caption{dToL logo}
+\end{figure}
 
-\hypertarget{slide-structure}{%
-\subsection{Slide Structure}\label{slide-structure}}
+\includegraphics[width=0.3\textwidth,height=\textheight]{../imgs/GIGA_logo.jpg}
+\includegraphics[width=0.3\textwidth,height=\textheight]{../imgs/EBP_logo.jpg}
 
-We use the a double has/pound for slides. This is important for
-hierarchy. If you use 1 it will work for the slides, but will mess up
-the single page version.
+\hypertarget{why-sequencing-the-dna}{%
+\subsection{Why sequencing the DNA}\label{why-sequencing-the-dna}}
 
-\hypertarget{leftright-alignment}{%
-\subsection{Left/Right alignment}\label{leftright-alignment}}
+\emph{«A knowledge of sequences could contribute much\\
+to our understanding of living matter»}
 
-To show things side by side on a slide you can use pull left/right. t is
-important to keep the tab on the second square bracket. On single page
-it will just be one after the other:
+Frederick Sanger, 1980
 
-.pull-left{[} This will be on left of slide {]}
-
-.pull-right{[} This will be on right{]}
-
-\hypertarget{data-from-external-sources}{%
-\subsection{Data from external
-sources}\label{data-from-external-sources}}
-
-everything in the rmd is relative to the inst/extdata directory so you
-have some data to load in, just put it in the data directory, read it in
-along the path. The structure is maintained for those attending the
-course and download the package using the instructions. The same rules
-are followed for imgs and scripts that you may call.
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{Table <-}\StringTok{ }\KeywordTok{read.table}\NormalTok{(}\StringTok{"../data/readThisTable.csv"}\NormalTok{, }\DataTypeTok{sep =} \StringTok{","}\NormalTok{, }\DataTypeTok{header =}\NormalTok{ T)}
-\end{Highlighting}
-\end{Shaded}
-
-\hypertarget{big-processes}{%
-\subsection{Big Processes}\label{big-processes}}
-
-If what you want to do is super intense computationally you can use the
-eval=F arguments to prevent it being done during compilation.
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{# Intense computation}
-\NormalTok{myresult <-}\StringTok{ }\DecValTok{10}\OperatorTok{^}\DecValTok{6} \OperatorTok{+}\StringTok{ }\DecValTok{1}
-\end{Highlighting}
-\end{Shaded}
-
-You can then just load in the result of the computation, and keep using
-the result after that. If you do want them to evaluate the intense
-computation, then you can hide this intermediate file that you are
-loading in with echo=F.
-
-\begin{longtable}[]{@{}l@{}}
-\toprule
-\endhead
-\begin{minipage}[t]{0.04\columnwidth}\raggedright
-\#\# Exercises The following few slides show you how to structure
-exercise slides.\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.04\columnwidth}\raggedright
-We often have several exercise slides per session. So you can just copy
-and paste and change the directory to the appropriate name. All 3 file
-types are made from you single exercise Rmd.\strut
-\end{minipage}\tabularnewline
-\bottomrule
-\end{longtable}
-
-\hypertarget{time-for-an-exercise}{%
-\subsection{Time for an exercise!}\label{time-for-an-exercise}}
-
-??? exercise description here??
-\href{../../exercises/exercises/MyExercise1_exercises.html}{here}
-
-\hypertarget{time-for-an-exercise-1}{%
-\subsection{Time for an exercise!}\label{time-for-an-exercise-1}}
-
-??? exercise description here??
-\href{../../exercises/exercises/MyExercise2_exercises.html}{here}
-
-\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
-
-\hypertarget{answers-to-exercise}{%
-\subsection{Answers to exercise}\label{answers-to-exercise}}
-
-Answers can be found
-\href{../../exercises/answers/MyExercise2_answers.html}{here}
-
-R code for solutions can be found
-\href{../../exercises/answers/MyExercise2_answers.R}{here}
+\begin{figure}
+\centering
+\includegraphics[width=0.7\textwidth,height=\textheight]{../imgs/science.png}
+\caption{Science}
+\end{figure}
 
 \end{document}

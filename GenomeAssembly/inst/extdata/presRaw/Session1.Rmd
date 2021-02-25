@@ -2,29 +2,22 @@
 title: RU Genome Assembly, Session 1 <html><div style='float:left'></div><hr color='#EB811B'
   size=1px width=796px></html>
 author: "Rockefeller University, The Vertebrate Genome Lab"
-date: ''
-output:
-  html_document:
-    toc: yes
-    toc_float: yes
-    depth: 3
-    number_sections: no
-    theme: united
-    highlight: tango
-  pdf_document:
-    toc: yes
+date: "http://rockefelleruniversity.github.io/RU_course_template/"
+output: 
   xaringan::moon_reader:
-    css:
-    - default
-    - metropolisCustom.css
-    - metropolis-fontsCustom.css
-    lib_dir: libs
     nature:
       highlightStyle: github
-      highlightLines: yes
-      countIncrementalSlides: no
+      highlightLines: true
+      countIncrementalSlides: false
+  html_document:
+    toc: true # table of content true
+    toc_float: yes
+    depth: 3  # upto three depths of headings (specified by #, ## and ###)
+    number_sections: false  ## if you want number sections at each table header
+    theme: united  # many options for theme, this one is my favorite.
+    highlight: tango  # specifies the syntax highlighting style
 params:
-  isSlides: 'yes'
+  isSlides: "no"
 ---
 
 ```{r,include=FALSE}
@@ -47,49 +40,28 @@ if(params$isSlides != "yes"){
 # An introduction to genome assembly
 #### Principles and practicalities of assembling, evaluating and using a reference genome
 
-:::{#hello .greeting .message width="40%"}
-Giulio Formenti, Ph.D.\
-Laboratory of Neurogenetics of Language\
-Vertebrate Genome Laboratory\
-The Rockefeller University\
-[gformenti@rockefeller.edu](mailto:gformenti@rockefeller.edu)
-:::
+<div width="40%">
+Giulio Formenti, Ph.D.<br/>
+Laboratory of Neurogenetics of Language<br/>
+Vertebrate Genome Laboratory<br/>
+The Rockefeller University<br/>
+<a href="mailto:gformenti@rockefeller.edu">gformenti@rockefeller.edu</a>
+</div>
 
 __In collaboration with the Vertebrate Genomes Laboratory__
 
 _March 22nd & 25th \- Monday & Thursday_
 
-![VGL](../imgs/VGL_logo.png){width=30%}
-![RU logo](../imgs/RU_logo.png){width=15%}
+<img src="../imgs/VGL_logo.png" width=30%>
+<img src="../imgs/RU_logo.png" width=15%>
 
+---
 ## Overview
 
 - [Introduction to Conda](https://docs.conda.io/projects/conda/en/latest/user-guide/getting-started.html)
 - [Introduction to Snakemake](https://snakemake.readthedocs.io/en/stable/)
 
 ---
-```{r, results='asis',include=TRUE,echo=FALSE}
-if(params$isSlides == "yes"){
-  cat("class: inverse, center, middle
-
-# Set Up
-
-<html><div style='float:left'></div><hr color='#EB811B' size=1px width=720px></html> 
-
----
-"    
-  )
-}else{
-  cat("# Set Up
-
----
-"    
-  )
-  
-}
-
-```
-
 ## Materials
 
 - [GEP - Genome evaluation pipeline](https://git.imp.fu-berlin.de/cmazzoni/genome_evaluation_snakemake)
@@ -117,20 +89,32 @@ Practicals with answers as HTML pages and R code solutions.
 ---
 ## The Vertebrate Genomes Project
 
-![VGP phases](../imgs/VGP_phases.png){width=30%}
-![VGP map](../imgs/VGP_map.png){width=60%}
+<img src="../imgs/VGP_phases.png" width=30% />
+<img src="../imgs/VGP_map.png" width=60% />
 
 <center>
 [VGP website](https://vertebrategenomesproject.org/)\
-![VGP logo](../imgs/VGP_logo.png){width=30%}
+<img src="../imgs/VGP_logo.png" width=30% />
 </center>
 
+---
+## Many international endeavours
+<img src="../imgs/B10K_logo.png" width=30% />
+<img src="../imgs/dToL_logo.png" width=30% />
+
+<img src="../imgs/GIGA_logo.jpg" width=30% />
+<img src="../imgs/EBP_logo.jpg" width=30% />
+
+<img src="../imgs/ERGA_logo.jpg" width=30% />
+<img src="../imgs/BAT1K_logo.jpg" width=30% />
+<img src="../imgs/BIOGENOMA_logo.png" width=30% />
+
+---
 ## Why sequencing the DNA
 
-_«A knowledge of sequences could contribute much \
+_«A knowledge of sequences could contribute much <br/>
 to our understanding of living matter»_
 
-Frederick Sanger\, 1980
+Frederick Sanger, 1980
 
-![Science](../imgs/science.png){width=70%}
-
+<img src="../imgs/science.png" width=70% />
