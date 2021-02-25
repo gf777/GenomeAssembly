@@ -1,24 +1,30 @@
 ---
-title: "My Course Template, Session 1 <html><div style='float:left'></div><hr color='#EB811B' size=1px width=796px></html>"
-author: "Rockefeller University, Bioinformatics Resource Centre"
-date: "http://rockefelleruniversity.github.io/RU_course_template/"
-output: 
+title: RU Genome Assembly, Session 1 <html><div style='float:left'></div><hr color='#EB811B'
+  size=1px width=796px></html>
+author: "Rockefeller University, The Vertebrate Genome Lab"
+date: ''
+output:
+  html_document:
+    toc: yes
+    toc_float: yes
+    depth: 3
+    number_sections: no
+    theme: united
+    highlight: tango
+  pdf_document:
+    toc: yes
   xaringan::moon_reader:
-    css: ["default", "metropolisCustom.css", "metropolis-fontsCustom.css"]
+    css:
+    - default
+    - metropolisCustom.css
+    - metropolis-fontsCustom.css
     lib_dir: libs
     nature:
       highlightStyle: github
-      highlightLines: true
-      countIncrementalSlides: false
-  html_document:
-    toc: true # table of content true
-    toc_float: yes
-    depth: 3  # upto three depths of headings (specified by #, ## and ###)
-    number_sections: false  ## if you want number sections at each table header
-    theme: united  # many options for theme, this one is my favorite.
-    highlight: tango  # specifies the syntax highlighting style
+      highlightLines: yes
+      countIncrementalSlides: no
 params:
-  isSlides: "no"
+  isSlides: 'no'
 ---
 
 ```{r,include=FALSE}
@@ -28,7 +34,7 @@ knitr::opts_chunk$set(echo = TRUE, tidy = T)
 
 ```{r, results='asis',include=TRUE,echo=FALSE}
 if(params$isSlides != "yes"){
-  cat("# ???My Course name (session1)???
+  cat("# Genome Assembly (session1)
 
 ---
 "    
@@ -168,7 +174,7 @@ This will be on right
 everything in the rmd is relative to the inst/extdata directory so you have some data to load in, just put it in the data directory, read it in along the path. 
 The structure is maintained for those attending the course and download the package using the instructions. The same rules are followed for imgs and scripts that you may call.
 ```{r,echo=T}
-Table <- read.table("data/readThisTable.csv",sep=",",header=T)
+Table <- read.table("../data/readThisTable.csv",sep=",",header=T)
 
 ```
 
@@ -185,7 +191,7 @@ myresult<-10^6 +1
 You can then just load in the result of the computation, and keep using the result after that. If you do want them to evaluate the intense computation, then you can hide this intermediate file that you are loading in with echo=F. 
 
 ```{r,echo=F, eval=T}
-load("data/myresult.RData")
+load("../data/myresult.RData")
 
 ```
 
