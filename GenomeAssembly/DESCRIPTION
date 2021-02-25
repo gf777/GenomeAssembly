@@ -1,0 +1,18 @@
+Package: RU Genome Assembly
+Type: Package
+Title: RU Genome Assembly
+Version: 0.1.1
+Author: Giulio Formenti and Olivier Fedrigo
+Maintainer: Giulio Formenti <gformenti@rockefeller.edu>
+Description: Principles and practicalities of assembling, evaluating and using a reference genome
+License: MIT
+LazyData: TRUE
+biocViews: Training
+Depends: methods, ggplot2, rmarkdown, rio
+Suggests: knitr,
+    rmarkdown,
+    testthat,
+    yaml
+SystemRequirements: R, RStudio
+VignetteBuilder: knitr
+RoxygenNote: 6.0.1
