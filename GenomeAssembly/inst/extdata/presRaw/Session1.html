@@ -26,67 +26,50 @@ class: center, middle, inverse, title-slide
 
 
 
-# Genome Assembly (session1)
-
----
-
 # An introduction to genome assembly
 #### Principles and practicalities of assembling, evaluating and using a reference genome
 
-&lt;div width="40%"&gt;
+&lt;div style="float:left; margin:10px" width="40%"&gt;
 Giulio Formenti, Ph.D.&lt;br/&gt;
-Laboratory of Neurogenetics of Language&lt;br/&gt;
+Laboratory of &lt;br/&gt; Neurogenetics of Language&lt;br/&gt;
 Vertebrate Genome Laboratory&lt;br/&gt;
 The Rockefeller University&lt;br/&gt;
 &lt;a href="mailto:gformenti@rockefeller.edu"&gt;gformenti@rockefeller.edu&lt;/a&gt;
 &lt;/div&gt;
 
+&lt;div style="float:left; margin:10px" width="40%"&gt;
+Oliver Fedrigo, Ph.D.&lt;br/&gt;
+Vertebrate Genome Laboratory&lt;br/&gt;
+The Rockefeller University&lt;br/&gt;
+&lt;a href="mailto:ofedrigo@rockefeller.edu"&gt;ofedrigo@rockefeller.edu&lt;/a&gt;
+&lt;/div&gt;
+
+&lt;br style="clear:left" /&gt;
+
 __In collaboration with the Vertebrate Genomes Laboratory__
 
-_March 22nd &amp; 25th \- Monday &amp; Thursday_
+_March 22nd &amp; 25th - Monday &amp; Thursday_
 
 &lt;img src="../imgs/VGL_logo.png" width=30%&gt;
 &lt;img src="../imgs/RU_logo.png" width=15%&gt;
 
 ---
-## Overview
+## Materials
 
 - [Introduction to Conda](https://docs.conda.io/projects/conda/en/latest/user-guide/getting-started.html)
 - [Introduction to Snakemake](https://snakemake.readthedocs.io/en/stable/)
-
----
-## Materials
 
 - [GEP - Genome evaluation pipeline](https://git.imp.fu-berlin.de/cmazzoni/genome_evaluation_snakemake)
 - Path on RU HPC to test data: /fakepath/to/data
 
 ---
-## Course materials
-
-?? this slide just shows where thye can get the course content from the download. You do not need to populate these directories. It will be made during compilation??
-
-Once the zip file in unarchived. All presentations as HTML slides and pages, their R code and HTML practical sheets will be available in the directories underneath.
-
-* **r_course/presentations/slides/**
-Presentations as an HTML slide show.
-* **r_course/presentations/singlepage/** 
-Presentations as an HTML single page.
-* **r_course/presentations/r_code/**
-R code in presentations.
-* **r_course/exercises/**
-Practicals as HTML pages. 
-* **r_course/answers/**
-Practicals with answers as HTML pages and R code solutions. 
-
-
----
 ## The Vertebrate Genomes Project
 
-&lt;img src="../imgs/VGP_phases.png" width=30% /&gt;
-&lt;img src="../imgs/VGP_map.png" width=60% /&gt;
+&lt;img src="../imgs/VGP_phases.png" width=35% /&gt;
+&lt;img src="../imgs/VGP_map.png" width=55% /&gt;
 
 &lt;center&gt;
-[VGP website](https://vertebrategenomesproject.org/)\
+&lt;a href="https://vertebrategenomesproject.org/"&gt;VGP website&lt;/a&gt;&lt;br/&gt;
 &lt;img src="../imgs/VGP_logo.png" width=30% /&gt;
 &lt;/center&gt;
 
@@ -94,13 +77,15 @@ Practicals with answers as HTML pages and R code solutions.
 ## Many international endeavours
 &lt;img src="../imgs/B10K_logo.png" width=30% /&gt;
 &lt;img src="../imgs/dToL_logo.png" width=30% /&gt;
-
 &lt;img src="../imgs/GIGA_logo.jpg" width=30% /&gt;
-&lt;img src="../imgs/EBP_logo.jpg" width=30% /&gt;
 
+&lt;img src="../imgs/EBP_logo.jpg" width=30% /&gt;
 &lt;img src="../imgs/ERGA_logo.jpg" width=30% /&gt;
 &lt;img src="../imgs/BAT1K_logo.jpg" width=30% /&gt;
+
+&lt;p style="text-align:center"&gt;
 &lt;img src="../imgs/BIOGENOMA_logo.png" width=30% /&gt;
+&lt;/p&gt;
 
 ---
 ## Why sequencing the DNA
@@ -111,6 +96,285 @@ to our understanding of living matter»_
 Frederick Sanger, 1980
 
 &lt;img src="../imgs/science.png" width=70% /&gt;
+
+---
+## 
+
+&lt;div style="font-size:30px;background-image: url('../imgs/bg.png'); background-repeat:no-repeat; background-size: 796px; text-align:center; height=600px; padding:200px 0 400px 0" width=100%&gt;&lt;b&gt;A little bit of history&lt;/b&gt;&lt;/div&gt;
+
+---
+## 
+
+&lt;img src="../imgs/gatc_history.png" /&gt;
+
+To learn more: &lt;a href="https://www.sciencedirect.com/science/article/pii/S2001037019303277"&gt;Giani et al., 2020&lt;/a&gt;
+
+---
+## 1953: The sequence of insulin
+
+&lt;img src="../imgs/insulin_a.png" width=500px /&gt;
+&lt;img src="../imgs/sanger.png" width=197px /&gt;
+
+_Refined partition chromatography:_
+
+The two chains are separated and fragmented, the fragments are individually read and sequences from each fragment overlapped to yield a complete sequence.
+
+To learn more: &lt;a href="https://www.sciencedirect.com/science/article/pii/S2001037019303277"&gt;Giani et al., 2020&lt;/a&gt;
+
+---
+## 1953: The sequence of insulin
+
+&lt;img src="../imgs/insulin_b.png" width=500px /&gt;
+&lt;img src="../imgs/sanger.png" width=197px /&gt;
+
+_Refined partition chromatography:_
+
+The two chains are separated and fragmented, the fragments are individually read and sequences from each fragment overlapped to yield a complete sequence.
+
+To learn more: &lt;a href="https://www.sciencedirect.com/science/article/pii/S2001037019303277"&gt;Giani et al., 2020&lt;/a&gt;
+
+---
+## 1953: The sequence of insulin
+
+
+&lt;img src="../imgs/insulin_c.png" width=500px /&gt;
+&lt;img src="../imgs/sanger.png" width=197px /&gt;
+
+
+_Refined partition chromatography:_
+
+The two chains are separated and fragmented, the fragments are individually read and sequences from each fragment overlapped to yield a complete sequence.
+
+To learn more: &lt;a href="https://www.sciencedirect.com/science/article/pii/S2001037019303277"&gt;Giani et al., 2020&lt;/a&gt;
+
+---
+## 1979: Shotgun sequencing
+
+Rodger Staden, invents of the first DNA sequencing ‘software’.
+
+In 1982, Sanger uses it to assemble the entire 48,502 bp of bacteriophage Lambda genome.
+
+&lt;img src="../imgs/overlap.png" width=500px /&gt;
+&lt;img src="../imgs/staden.png" width=197px /&gt;
+
+To learn more: &lt;a href="https://www.sciencedirect.com/science/article/pii/S2001037019303277"&gt;Giani et al., 2020&lt;/a&gt;
+
+---
+## Whole Genome Sequencing
+
+&lt;img src="../imgs/timeline_half.png" width=400px /&gt;
+
+---
+## De novo genome assembly
+
+The process of determining the sequence of an organism without existing reference.
+
+&lt;img src="../imgs/humanWGA.jpg" width=800px /&gt;
+
+---
+## The HGP produced many tech advancements
+
+&lt;img src="../imgs/Moore_law.png" width=600px /&gt;
+
+---
+## Whole Genome Sequencing
+
+&lt;img src="../imgs/timeline.png" width=800px /&gt;
+
+---
+## Genbank
+
+&lt;img src="../imgs/Genbank1.png" width=800px /&gt;
+
+---
+## Genbank
+
+&lt;img src="../imgs/Genbank2.png" width=800px /&gt;
+
+---
+## NGS-based WGS
+&lt;div style="text-align:center"&gt;
+&lt;div style="float:left"&gt;
+&lt;img src="../imgs/science_birds1.png" height=250px /&gt; &lt;br/&gt;
+
+&lt;img src="../imgs/science_birds2.png" height=250px /&gt;
+&lt;/div&gt;
+
+&lt;img style="float:left" src="../imgs/bird_tree.png" height=500px /&gt;
+
+&lt;br style="clear:left" /&gt;
+&lt;/div&gt;
+
+---
+## 
+
+&lt;div style="font-size:30px;background-image: url('../imgs/bg.png'); background-repeat:no-repeat; background-size: 796px; text-align:center; height=600px; padding:200px 0 400px 0" width=100%&gt;&lt;b&gt;Technologies&lt;/b&gt;&lt;/div&gt;
+
+---
+## Repeats are a problem
+
+&lt;img src="../imgs/Genbank2.png" width=800px /&gt;
+
+---
+## Third generation sequencing
+
+&lt;div style="float:left; margin:10px"&gt;
+&lt;img src="../imgs/NGS.png" width=300px /&gt;&lt;br/&gt;
+&lt;b&gt;NGS&lt;/b&gt;&lt;br/&gt;
+- Bridge amplification&lt;br/&gt;
+- Short reads&lt;br/&gt;
+- High throughput&lt;br/&gt;
+- High quality&lt;br/&gt;
+&lt;/div&gt;
+&lt;div style="float:left; margin:10px"&gt;
+&lt;img src="../imgs/TGS.png" width=300px /&gt;&lt;br/&gt;
+&lt;b&gt;Pacbio (TGS)&lt;/b&gt;&lt;br/&gt;
+- Single molecule&lt;br/&gt;
+- Long reads&lt;br/&gt;
+- Lower throughput&lt;br/&gt;
+- Lower quality&lt;br/&gt;
+&lt;/div&gt;
+
+&lt;br style="clear:left" /&gt;
+
+&lt;a href="https://www.elsevier.es/es-revista-revista-mexicana-biodiversidad-91-articulo-the-study-biodiversity-in-era-S1870345314730076"&gt;Escalante et al., 2014&lt;/a&gt;
+
+---
+## Third generation sequencing: Pacbio
+
+&lt;img src="../imgs/pacbio1.png" width=450px /&gt;
+&lt;img src="../imgs/pacbio2.jpg" width=200px /&gt;
+
+---
+## Third generation sequencing: Pacbio
+
+&lt;img src="../imgs/pacbio3.png" width=800px /&gt;
+
+---
+## Third generation sequencing: Pacbio
+
+&lt;img src="../imgs/pacbio4.png" width=800px /&gt;
+
+---
+## Long read matter
+
+High-quality error-free genome assemblies and annotations are necessary as current 1st and 2nd generation genome sequencing approaches generate numerous errors that cause a variety of problems in downstream analyses. &lt;b&gt;Parts of genes are missing, and some are incorrectly assembled, while others are completely missing from the assemblies despite pieces found in the raw sequence reads.&lt;/b&gt; (Vertebrate Genomes Project)
+
+&lt;img src="../imgs/finch.png" width=800px /&gt;
+
+&lt;a href="https://academic.oup.com/gigascience/article/6/10/gix085/4096262"&gt;Korlach et al., 2017&lt;/a&gt;
+
+---
+## Third generation sequencing: nanopore
+
+&lt;img src="../imgs/nanopore2.png" width=340px /&gt;
+&lt;img src="../imgs/nanopore3.png" width=380px /&gt;
+
+---
+## Linked reads
+
+&lt;img src="../imgs/10x.png" width=600px /&gt;
+&lt;img src="../imgs/10x_logo.jpg" width=100px /&gt;
+
+* DNA &amp; RNA (single-cell)
+* Formerly 10x Genomics, now &lt;a href="https://www.universalsequencing.com/technology"&gt;Universal Sequencing (TELL-Seq)&lt;/a&gt;
+
+---
+## Pacbio Hifi
+
+&lt;img src="../imgs/pacbio_logo.png" width=200px /&gt;
+
+&lt;img src="../imgs/ccs.png" width=100% /&gt;
+
+---
+## The Telomere-to-Telomere Consortium (T2T)
+
+An open, community-based effort to generate the first complete assembly of a human genome.
+
+&lt;img src="../imgs/logsdon.png" width=100% /&gt;
+
+&lt;a href="https://www.biorxiv.org/content/10.1101/2020.09.08.285395v1"&gt;Logsdon et al., preprint&lt;/a&gt;
+
+---
+## The Telomere-to-Telomere Consortium (T2T)
+
+&lt;div style="text-align:center"&gt;
+&lt;img src="../imgs/miga1.png" width=75% /&gt;
+
+&lt;img src="../imgs/miga2.png" width=65% /&gt;
+&lt;/div&gt;
+&lt;a href="https://www.nature.com/articles/s41586-020-2547-7"&gt;Miga et al., 2020&lt;/a&gt;
+
+---
+## The Telomere-to-Telomere Consortium (T2T)
+
+Hifi reads are nearly perfect in homopolymer-compressed space.
+
+AATTCTACTCATAT__AAAAA__TCA__TTTTTT__CA &amp;#8594; AATTCTACTCATAT__A__TCA__T__CA
+
+&lt;img style="margin:10px" src="../imgs/NGS.png" width=45% /&gt;
+&lt;img style="margin:10px" src="../imgs/TGS.png" width=45% /&gt;
+
+&lt;a href="https://www.elsevier.es/es-revista-revista-mexicana-biodiversidad-91-articulo-the-study-biodiversity-in-era-S1870345314730076"&gt;Escalante et al., 2014&lt;/a&gt;
+
+---
+## The Telomere-to-Telomere Consortium (T2T)
+
+&lt;img src="../imgs/nurk.png" width=100% /&gt;
+
+Nurk et al., in preparation
+
+---
+## From reads to contigs
+
+&lt;img src="../imgs/reads2contigs.png" width=100% /&gt;
+
+&lt;div style="text-align:center"&gt;&lt;img src="../imgs/swallow.png" width=90% /&gt;&lt;/div&gt;
+
+---
+## From tigs to scaffolds
+
+&lt;img src="../imgs/tigs2scaffolds.png" width=100% /&gt;
+
+---
+## From scaffolds to chromosomes
+
+&lt;img src="../imgs/scaffolds2chr.png" width=100% /&gt;
+
+---
+## Scaffolding: Optical maps
+
+&lt;img style="position:absolute; position: 0 0" src="../imgs/bionano1.png" width=20% /&gt;
+&lt;br/&gt;&lt;br/&gt;&lt;br/&gt;
+&lt;img src="../imgs/bionano2.jpg" width=100% /&gt;
+
+---
+## Scaffolding: Optical maps
+
+&lt;img src="../imgs/bionano3.jpg" width=100% /&gt;
+&lt;img src="../imgs/bionano4.png" width=100% /&gt;
+
+---
+## Scaffolding: Hic
+
+Long-range interactions. Used also to reconstruct the 3D structure of DNA.
+
+&lt;img src="../imgs/hic1.png" width=45% /&gt;
+&lt;img src="../imgs/hic2.png" width=45% /&gt;
+
+---
+## High molecular DNA required
+
+&lt;img src="../imgs/PFGE_FEMTO.png" width=100% /&gt;
+
+&lt;a href="https://academic.oup.com/gigascience/article/8/1/giy142/5202456"&gt;Formenti et al., 2019&lt;/a&gt;
+
+---
+## VGP pipeline
+
+&lt;img src="../imgs/VGP_pipeline.png" width=100% /&gt;
+
+&lt;a href="https://www.biorxiv.org/content/10.1101/2020.05.22.110833v1"&gt;Rhie et al., in press&lt;/a&gt;
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
