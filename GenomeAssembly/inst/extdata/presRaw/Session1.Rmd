@@ -99,7 +99,7 @@ Frederick Sanger, 1980
 ---
 ## 
 
-<div style="font-size:30px;background-image: url('../imgs/bg.png'); background-repeat:no-repeat; background-size: 796px; text-align:center; height=600px; padding:200px 0 400px 0" width=100%><b>A little bit of history</b></div>
+<div style="font-size:30px;background-image: url('../imgs/bg.png'); background-repeat:no-repeat; background-size: 796px; text-align:center; height=600px; padding:200px 0 400px 0" width=100%><b>Genome assembly:<br/>A little bit of history</b></div>
 
 ---
 ## 
@@ -207,7 +207,7 @@ The process of determining the sequence of an organism without existing referenc
 ---
 ## 
 
-<div style="font-size:30px;background-image: url('../imgs/bg.png'); background-repeat:no-repeat; background-size: 796px; text-align:center; height=600px; padding:200px 0 400px 0" width=100%><b>Technologies</b></div>
+<div style="font-size:30px;background-image: url('../imgs/bg.png'); background-repeat:no-repeat; background-size: 796px; text-align:center; height=600px; padding:200px 0 400px 0" width=100%><b>Genome assembly:<br/>Technologies</b></div>
 
 ---
 ## Repeats are a problem
@@ -374,3 +374,354 @@ Long-range interactions. Used also to reconstruct the 3D structure of DNA.
 <img src="../imgs/VGP_pipeline.png" width=100% />
 
 <a href="https://www.biorxiv.org/content/10.1101/2020.05.22.110833v1">Rhie et al., in press</a>
+
+---
+## 
+
+<div style="font-size:30px;background-image: url('../imgs/bg.png'); background-repeat:no-repeat; background-size: 796px; text-align:center; height=600px; padding:200px 0 400px 0" width=100%><b>Genome assembly:<br/>Principles and practicalities</b></div>
+
+---
+## Everything starts from an alignment
+
+- Brute-force
+- Global alignments
+- Local alignments
+- Mixed global/local alignments
+- Alignment-free approaches
+
+---
+## Brute-force
+
+<ol>
+<li>Generate all possible alignments</li>
+<li>Calculate quality score for each alignment</li>
+<li>Pick the alignment with the highest quality score</li>
+<li>Done!</li>
+</ol>
+
+Unfortunately, there are: <img src="../imgs/brute_force.png" width=10% /> potential alignments between 2 sequences of length N
+
+That is, with sequence length = 100:
+
+2^(2\*200)/(3.14\*100)^(1/2) = 9.068476 × 10^58 alignments
+
+---
+## Global alignments
+
+<b>1970: Needleman–Wunsch algorithm</b>
+
+- Still guarantees that the best solution will be found
+- Also referred as optimal matching algorithm
+- Divides a large problem (that of aligning long sequences between each other) into smaller problems (a concept referred to as Dynamic programming)
+- Maximizes similarity
+- Goes from the smaller problems to the general problem solution
+- Used for ‘optimal’ global alignment
+- Generally for highly similar sequences (in sequence and length)
+- Very slow as the length of sequences grows, but of utmost precision
+
+---
+## 
+
+<div style="float:left">
+<br/><br/><br/><br/>
+Sequences<br/>
+---------<br/>
+GCATGCU<br/>
+GATTACA<br/>
+<br/>
+Best alignments<br/>
+---------------<br/>
+GCATG-CU<br/>
+G-ATTACA<br/>
+<br/>
+GCA-TGCU<br/>
+G-ATTACA<br/>
+<br/>
+GCAT-GCU<br/>
+G-ATTACA<br/>
+</div>
+
+<img style="float:left" src="../imgs/NW_algorithm.png" width=70% />
+
+<br style="clear:left" />
+
+<a href="https://en.wikipedia.org/wiki/Needleman%E2%80%93Wunsch_algorithm">Wikipedia</a>
+
+
+---
+## The edit distance
+
+- Also referred as Levenshtein distance
+
+banana → bamana (substitution of "n" for "m")
+
+bamana → bambna (substitution of "a" for "b")
+
+bambna → bambina (insertion of "i").
+
+EDIT DISTANCE = 3
+
+You can calculate the edit distance for all possible alignments and choose the alignment that minimizes the edit distance (for longer sequences find an heuristic). It has been shown it is mathematically equivalent to optimal matching.
+
+---
+##  Local alignments
+
+<b>1981: Smith–Waterman algorithm</b>
+
+- Compares segments of all possible lengths and optimizes the similarity measure
+
+- The main difference to the Needleman–Wunsch algorithm is that negative scoring matrix cells are set to zero, making positively scoring local alignments visible. Traceback procedure starts at the highest scoring matrix cell and proceeds until a cell with score zero is encountered, yielding the highest scoring local alignment
+
+- It finds the optimal “local” alignment (best local solution)
+
+- For slightly divergent sequences
+
+- Quadratic complexity in time and space, therefore it often cannot be practically applied to large-scale problems → you need linear solutions
+
+---
+##  Alignment-free sequence comparisons
+
+Alignment-free approaches have been used for:
+
+- Transcript quantification → 10-100 times faster.
+- SNP calling for known variants (genotyping).
+- _De novo_ genome assembly.
+- Metagenomics.
+- Identification of highly divergent sequences.
+- Detection of functional similarities between regulatory elements (e.g. promoters, enhancers, and silencers).
+- Study of horizontal gene transfer.
+- DNA barcoding of species.
+
+---
+## Euclidean distance
+
+<div style="text-align:center">
+<img src="../imgs/Euclidean_distance.png" width=70% />
+<br/>
+<a href="https://link.springer.com/article/10.1186/s13059-017-1319-7">Zielezinski et al. 2017</a>
+</div>
+
+---
+## Assembling a genome today
+
+<div style="float:left; margin:20px">
+<b>Short read assemblers:</b><br/>
+<br/>
+- SGA&nbsp;&nbsp;&nbsp;<i>String graph</i><br/>
+- ValVel&nbsp;&nbsp;&nbsp;<i>String graph</i><br/>
+- DISCOVAR&nbsp;&nbsp;&nbsp;<i>DBG</i><br/>
+- SOAPdenovo&nbsp;&nbsp;&nbsp;<i>DBG</i><br/>
+- Euler&nbsp;&nbsp;&nbsp;<i>DBG</i><br/>
+- ABySS&nbsp;&nbsp;&nbsp;<i>DBG</i><br/>
+- Velvet&nbsp;&nbsp;&nbsp;<i>DBG</i><br/>
+- SPAdes&nbsp;&nbsp;&nbsp;<i>DBG</i><br/>
+- Edena&nbsp;&nbsp;&nbsp;<i>OLC</i><br/>
+- Ray&nbsp;&nbsp;&nbsp;<i>Hybrid</i><br/>
+- SSAKE&nbsp;&nbsp;&nbsp;<i>Greedy</i><br/>
+- Perga&nbsp;&nbsp;&nbsp;<i>Greedy</i><br/>
+- ...<br/>
+</div>
+
+<div style="float:left; margin:20px">
+<b>Long read assemblers:</b><br/>
+<br/>
+- Hifiasm&nbsp;&nbsp;&nbsp;<i>OLC</i><br/>
+- Canu/HiCanu (ex Celera)&nbsp;&nbsp;&nbsp;<i>OLC</i><br/>
+- Peregrine&nbsp;&nbsp;&nbsp;<i>HGAP/OLC</i><br/>
+- Falcon-Unzip&nbsp;&nbsp;&nbsp;<i>HGAP/OLC</i><br/>
+- Flye&nbsp;&nbsp;&nbsp;<i>Repeat graph</i><br/>
+- ...<br/>
+</div>
+<br style="clear:left" />
+<a href="https://en.wikipedia.org/wiki/De_novo_sequence_assemblers">Wikipedia</a>
+
+---
+## Assembling a genome today
+
+<img src="../imgs/OLC_DBG1.png" width=100% />
+
+---
+## Assembling a genome today
+
+<img src="../imgs/OLC_DBG2.png" width=100% />
+
+---
+## Canu
+
+<div style="text-align:center">
+<img src="../imgs/canu.png" width=50% />
+</div>
+
+---
+## Galaxy
+
+<img src="../imgs/galaxy1.png" width=100% />
+
+---
+## Genome assembly with Galaxy Unicycler
+
+<div style="text-align:center">
+<img src="../imgs/galaxy2.png" width=80% />
+</div>
+
+---
+## 
+
+<div style="font-size:30px;background-image: url('../imgs/bg.png'); background-repeat:no-repeat; background-size: 796px; text-align:center; height=600px; padding:200px 0 400px 0" width=100%><b>Genome assembly:<br/>Evaluation</b></div>
+
+---
+## Synopsis
+
+<ol>
+<li>Estimation of genome parameters (Genomescope)</li>
+<li>General assembly metrics (contiguity, quality)</li>
+<li>Assembly completeness (BUSCO)</li>
+<li>Structural accuracy</li>
+<li>Kmer multiplicity (false duplications, missing kmers)</li>
+<li>Switch rates</li>
+<li>WGA (D-Genies, Mummer, Cactus)</li>
+<ol>
+
+---
+## 1. Genome parameters
+
+Unrivalled software for assembly-free estimates is Genomescope (v2.0, 2020)
+
+<img src="../imgs/gs1.png" width=49% />
+<img src="../imgs/gs2.png" width=49% />
+
+---
+## What is a genome assembly?
+
+A genome assembly is the entire genomic sequence derived through a _de novo_ (i.e. reference-free) assembly process of the raw sequencing reads and released by the curators of the genome in the database upon publication.
+
+- Until now a single ‘reference’ individual or pooled individuals in a single reference.
+- Haploid.
+- Sometimes alternative alleles reported as variants.
+- Haplotigs were often completely shuffled as it is unfeasible to determine long blocks of haplotype with NGS.
+- Sometimes more than one assembly is present.
+
+---
+## The primary assembly
+
+The Primary Assembly constitutes what Genbank curators consider the most up-to-date source for the genomic sequence for this reference.
+
+When available, this is the first result being shown.
+
+Picking a random human gene, the Primary Assembly normally refers to the human genome assembly ‘GRCh38’ (Genome Reference Consortium human build n. 38), the latest release of the long list of high-quality assemblies for the human genome generated since 2001.
+
+<img src="../imgs/assembly1.png" width=100% />
+
+---
+## The primary assembly
+
+<img src="../imgs/assembly2.png" width=100% />
+
+---
+## 2. Contiguity
+
+<img src="../imgs/assembly3.png" width=100% />
+
+---
+## 2. Quality (QV)
+
+<div style="text-align:center">
+<img src="../imgs/qv1.png" width=60% />
+
+<img src="../imgs/qv2.png" width=60% />
+</div>
+
+---
+## 3. BUSCO scores
+
+<div style="text-align:center">
+<img src="../imgs/busco.png" width=80% />
+</div>
+
+---
+## 4. Structural accuracy
+
+<div style="text-align:center">
+<img src="../imgs/hic2.png" width=70% />
+</div>
+
+---
+## 5. Kmer multiplicity
+
+<div style="text-align:center">
+<img src="../imgs/kmer_multiplicity1.png" width=70% />
+</div>
+
+---
+## 5. Kmer multiplicity
+
+<div style="text-align:center">
+<img src="../imgs/kmer_multiplicity2.png" width=70% />
+</div>
+
+---
+## 6. Switch error rate
+
+<div style="text-align:center">
+<img src="../imgs/switch1.png" width=70% />
+
+<img src="../imgs/switch2.png" width=70% />
+</div>
+
+---
+## 
+
+<div style="font-size:30px;background-image: url('../imgs/bg.png'); background-repeat:no-repeat; background-size: 796px; text-align:center; height=600px; padding:200px 0 400px 0" width=100%><b>Genome assembly:<br/>Applications</b></div>
+
+---
+## Applications
+
+<div style="text-align:center">
+<img src="../imgs/applications_long_reads.png" width=100% />
+</div>
+
+---
+## Contiguity matters
+
+<div style="text-align:center">
+<img src="../imgs/contiguity.png" width=80% />
+</div>
+
+---
+## Contiguity matters
+
+
+Differences between two humans:
+
+<img src="../imgs/human_SVs.png" width=100% />
+
+Human-chimp differences (120 Mb overall):
+
+3x10^7 substitutions → 30 Mb (25%)
+
+5x10^6 indels (<80 bp) → 22 Mb (18%)
+
+7x10^4 SVs (>80 bp) → 68 Mb (57%)
+
+---
+## Whole genome alignments
+
+<img src="../imgs/chicken_barn_swallow.png" width=100% />
+
+---
+## Whole genome alignments
+
+<div style="text-align:center">
+<img src="../imgs/chicken_zebra_finch.png" width=50% />
+</div>
+
+---
+## Supergenes in the ruff
+
+<img src="../imgs/ruff.png" width=100% />
+
+<div style="text-align:center">
+<a href="https://www.nature.com/articles/ng.3443">Küpper et al., 2015</a>
+<br /><br /><br />
+<a href="https://www.scilifelab.se/news/a-supergene-underlies-genetic-differences-in-testosteron-levels-and-sexual-behaviour-in-male-ruff/">Watch this video!</a>
+</div>

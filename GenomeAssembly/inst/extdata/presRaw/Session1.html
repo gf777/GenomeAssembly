@@ -100,7 +100,7 @@ Frederick Sanger, 1980
 ---
 ## 
 
-&lt;div style="font-size:30px;background-image: url('../imgs/bg.png'); background-repeat:no-repeat; background-size: 796px; text-align:center; height=600px; padding:200px 0 400px 0" width=100%&gt;&lt;b&gt;A little bit of history&lt;/b&gt;&lt;/div&gt;
+&lt;div style="font-size:30px;background-image: url('../imgs/bg.png'); background-repeat:no-repeat; background-size: 796px; text-align:center; height=600px; padding:200px 0 400px 0" width=100%&gt;&lt;b&gt;Genome assembly:&lt;br/&gt;A little bit of history&lt;/b&gt;&lt;/div&gt;
 
 ---
 ## 
@@ -208,7 +208,7 @@ The process of determining the sequence of an organism without existing referenc
 ---
 ## 
 
-&lt;div style="font-size:30px;background-image: url('../imgs/bg.png'); background-repeat:no-repeat; background-size: 796px; text-align:center; height=600px; padding:200px 0 400px 0" width=100%&gt;&lt;b&gt;Technologies&lt;/b&gt;&lt;/div&gt;
+&lt;div style="font-size:30px;background-image: url('../imgs/bg.png'); background-repeat:no-repeat; background-size: 796px; text-align:center; height=600px; padding:200px 0 400px 0" width=100%&gt;&lt;b&gt;Genome assembly:&lt;br/&gt;Technologies&lt;/b&gt;&lt;/div&gt;
 
 ---
 ## Repeats are a problem
@@ -375,6 +375,357 @@ Long-range interactions. Used also to reconstruct the 3D structure of DNA.
 &lt;img src="../imgs/VGP_pipeline.png" width=100% /&gt;
 
 &lt;a href="https://www.biorxiv.org/content/10.1101/2020.05.22.110833v1"&gt;Rhie et al., in press&lt;/a&gt;
+
+---
+## 
+
+&lt;div style="font-size:30px;background-image: url('../imgs/bg.png'); background-repeat:no-repeat; background-size: 796px; text-align:center; height=600px; padding:200px 0 400px 0" width=100%&gt;&lt;b&gt;Genome assembly:&lt;br/&gt;Principles and practicalities&lt;/b&gt;&lt;/div&gt;
+
+---
+## Everything starts from an alignment
+
+- Brute-force
+- Global alignments
+- Local alignments
+- Mixed global/local alignments
+- Alignment-free approaches
+
+---
+## Brute-force
+
+&lt;ol&gt;
+&lt;li&gt;Generate all possible alignments&lt;/li&gt;
+&lt;li&gt;Calculate quality score for each alignment&lt;/li&gt;
+&lt;li&gt;Pick the alignment with the highest quality score&lt;/li&gt;
+&lt;li&gt;Done!&lt;/li&gt;
+&lt;/ol&gt;
+
+Unfortunately, there are: &lt;img src="../imgs/brute_force.png" width=10% /&gt; potential alignments between 2 sequences of length N
+
+That is, with sequence length = 100:
+
+2^(2\*200)/(3.14\*100)^(1/2) = 9.068476 × 10^58 alignments
+
+---
+## Global alignments
+
+&lt;b&gt;1970: Needleman–Wunsch algorithm&lt;/b&gt;
+
+- Still guarantees that the best solution will be found
+- Also referred as optimal matching algorithm
+- Divides a large problem (that of aligning long sequences between each other) into smaller problems (a concept referred to as Dynamic programming)
+- Maximizes similarity
+- Goes from the smaller problems to the general problem solution
+- Used for ‘optimal’ global alignment
+- Generally for highly similar sequences (in sequence and length)
+- Very slow as the length of sequences grows, but of utmost precision
+
+---
+## 
+
+&lt;div style="float:left"&gt;
+&lt;br/&gt;&lt;br/&gt;&lt;br/&gt;&lt;br/&gt;
+Sequences&lt;br/&gt;
+---------&lt;br/&gt;
+GCATGCU&lt;br/&gt;
+GATTACA&lt;br/&gt;
+&lt;br/&gt;
+Best alignments&lt;br/&gt;
+---------------&lt;br/&gt;
+GCATG-CU&lt;br/&gt;
+G-ATTACA&lt;br/&gt;
+&lt;br/&gt;
+GCA-TGCU&lt;br/&gt;
+G-ATTACA&lt;br/&gt;
+&lt;br/&gt;
+GCAT-GCU&lt;br/&gt;
+G-ATTACA&lt;br/&gt;
+&lt;/div&gt;
+
+&lt;img style="float:left" src="../imgs/NW_algorithm.png" width=70% /&gt;
+
+&lt;br style="clear:left" /&gt;
+
+&lt;a href="https://en.wikipedia.org/wiki/Needleman%E2%80%93Wunsch_algorithm"&gt;Wikipedia&lt;/a&gt;
+
+
+---
+## The edit distance
+
+- Also referred as Levenshtein distance
+
+banana → bamana (substitution of "n" for "m")
+
+bamana → bambna (substitution of "a" for "b")
+
+bambna → bambina (insertion of "i").
+
+EDIT DISTANCE = 3
+
+You can calculate the edit distance for all possible alignments and choose the alignment that minimizes the edit distance (for longer sequences find an heuristic). It has been shown it is mathematically equivalent to optimal matching.
+
+---
+##  Local alignments
+
+&lt;b&gt;1981: Smith–Waterman algorithm&lt;/b&gt;
+
+- Compares segments of all possible lengths and optimizes the similarity measure
+
+- The main difference to the Needleman–Wunsch algorithm is that negative scoring matrix cells are set to zero, making positively scoring local alignments visible. Traceback procedure starts at the highest scoring matrix cell and proceeds until a cell with score zero is encountered, yielding the highest scoring local alignment
+
+- It finds the optimal “local” alignment (best local solution)
+
+- For slightly divergent sequences
+
+- Quadratic complexity in time and space, therefore it often cannot be practically applied to large-scale problems → you need linear solutions
+
+---
+##  Alignment-free sequence comparisons
+
+Alignment-free approaches have been used for:
+
+- Transcript quantification → 10-100 times faster.
+- SNP calling for known variants (genotyping).
+- _De novo_ genome assembly.
+- Metagenomics.
+- Identification of highly divergent sequences.
+- Detection of functional similarities between regulatory elements (e.g. promoters, enhancers, and silencers).
+- Study of horizontal gene transfer.
+- DNA barcoding of species.
+
+---
+## Euclidean distance
+
+&lt;div style="text-align:center"&gt;
+&lt;img src="../imgs/Euclidean_distance.png" width=70% /&gt;
+&lt;br/&gt;
+&lt;a href="https://link.springer.com/article/10.1186/s13059-017-1319-7"&gt;Zielezinski et al. 2017&lt;/a&gt;
+&lt;/div&gt;
+
+---
+## Assembling a genome today
+
+&lt;div style="float:left; margin:20px"&gt;
+&lt;b&gt;Short read assemblers:&lt;/b&gt;&lt;br/&gt;
+&lt;br/&gt;
+- SGA&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;i&gt;String graph&lt;/i&gt;&lt;br/&gt;
+- ValVel&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;i&gt;String graph&lt;/i&gt;&lt;br/&gt;
+- DISCOVAR&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;i&gt;DBG&lt;/i&gt;&lt;br/&gt;
+- SOAPdenovo&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;i&gt;DBG&lt;/i&gt;&lt;br/&gt;
+- Euler&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;i&gt;DBG&lt;/i&gt;&lt;br/&gt;
+- ABySS&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;i&gt;DBG&lt;/i&gt;&lt;br/&gt;
+- Velvet&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;i&gt;DBG&lt;/i&gt;&lt;br/&gt;
+- SPAdes&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;i&gt;DBG&lt;/i&gt;&lt;br/&gt;
+- Edena&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;i&gt;OLC&lt;/i&gt;&lt;br/&gt;
+- Ray&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;i&gt;Hybrid&lt;/i&gt;&lt;br/&gt;
+- SSAKE&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;i&gt;Greedy&lt;/i&gt;&lt;br/&gt;
+- Perga&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;i&gt;Greedy&lt;/i&gt;&lt;br/&gt;
+- ...&lt;br/&gt;
+&lt;/div&gt;
+
+&lt;div style="float:left; margin:20px"&gt;
+&lt;b&gt;Long read assemblers:&lt;/b&gt;&lt;br/&gt;
+&lt;br/&gt;
+- Hifiasm&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;i&gt;OLC&lt;/i&gt;&lt;br/&gt;
+- Canu/HiCanu (ex Celera)&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;i&gt;OLC&lt;/i&gt;&lt;br/&gt;
+- Peregrine&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;i&gt;HGAP/OLC&lt;/i&gt;&lt;br/&gt;
+- Falcon-Unzip&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;i&gt;HGAP/OLC&lt;/i&gt;&lt;br/&gt;
+- Flye&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;i&gt;Repeat graph&lt;/i&gt;&lt;br/&gt;
+- ...&lt;br/&gt;
+&lt;/div&gt;
+&lt;br style="clear:left" /&gt;
+&lt;a href="https://en.wikipedia.org/wiki/De_novo_sequence_assemblers"&gt;Wikipedia&lt;/a&gt;
+
+---
+## Assembling a genome today
+
+&lt;img src="../imgs/OLC_DBG1.png" width=100% /&gt;
+
+---
+## Assembling a genome today
+
+&lt;img src="../imgs/OLC_DBG2.png" width=100% /&gt;
+
+---
+## Canu
+
+&lt;div style="text-align:center"&gt;
+&lt;img src="../imgs/canu.png" width=50% /&gt;
+&lt;/div&gt;
+
+---
+## Galaxy
+
+&lt;img src="../imgs/galaxy1.png" width=100% /&gt;
+
+---
+## Genome assembly with Galaxy Unicycler
+
+&lt;div style="text-align:center"&gt;
+&lt;img src="../imgs/galaxy2.png" width=80% /&gt;
+&lt;/div&gt;
+
+---
+## 
+
+&lt;div style="font-size:30px;background-image: url('../imgs/bg.png'); background-repeat:no-repeat; background-size: 796px; text-align:center; height=600px; padding:200px 0 400px 0" width=100%&gt;&lt;b&gt;Genome assembly:&lt;br/&gt;Evaluation&lt;/b&gt;&lt;/div&gt;
+
+---
+## Synopsis
+
+&lt;ol&gt;
+&lt;li&gt;Estimation of genome parameters (Genomescope)&lt;/li&gt;
+&lt;li&gt;General assembly metrics (contiguity, quality)&lt;/li&gt;
+&lt;li&gt;Assembly completeness (BUSCO)&lt;/li&gt;
+&lt;li&gt;Structural accuracy&lt;/li&gt;
+&lt;li&gt;Kmer multiplicity (false duplications, missing kmers)&lt;/li&gt;
+&lt;li&gt;Switch rates&lt;/li&gt;
+&lt;li&gt;WGA (D-Genies, Mummer, Cactus)&lt;/li&gt;
+&lt;ol&gt;
+
+---
+## 1. Genome parameters
+
+Unrivalled software for assembly-free estimates is Genomescope (v2.0, 2020)
+
+&lt;img src="../imgs/gs1.png" width=49% /&gt;
+&lt;img src="../imgs/gs2.png" width=49% /&gt;
+
+---
+## What is a genome assembly?
+
+A genome assembly is the entire genomic sequence derived through a _de novo_ (i.e. reference-free) assembly process of the raw sequencing reads and released by the curators of the genome in the database upon publication.
+
+- Until now a single ‘reference’ individual or pooled individuals in a single reference.
+- Haploid.
+- Sometimes alternative alleles reported as variants.
+- Haplotigs were often completely shuffled as it is unfeasible to determine long blocks of haplotype with NGS.
+- Sometimes more than one assembly is present.
+
+---
+## The primary assembly
+
+The Primary Assembly constitutes what Genbank curators consider the most up-to-date source for the genomic sequence for this reference.
+
+When available, this is the first result being shown.
+
+Picking a random human gene, the Primary Assembly normally refers to the human genome assembly ‘GRCh38’ (Genome Reference Consortium human build n. 38), the latest release of the long list of high-quality assemblies for the human genome generated since 2001.
+
+&lt;img src="../imgs/assembly1.png" width=100% /&gt;
+
+---
+## The primary assembly
+
+&lt;img src="../imgs/assembly2.png" width=100% /&gt;
+
+---
+## 2. Contiguity
+
+&lt;img src="../imgs/assembly3.png" width=100% /&gt;
+
+---
+## 2. Quality (QV)
+
+&lt;div style="text-align:center"&gt;
+&lt;img src="../imgs/qv1.png" width=60% /&gt;
+
+&lt;img src="../imgs/qv2.png" width=60% /&gt;
+&lt;/div&gt;
+
+---
+## 3. BUSCO scores
+
+&lt;div style="text-align:center"&gt;
+&lt;img src="../imgs/busco.png" width=80% /&gt;
+&lt;/div&gt;
+
+---
+## 4. Structural accuracy
+
+&lt;div style="text-align:center"&gt;
+&lt;img src="../imgs/hic2.png" width=70% /&gt;
+&lt;/div&gt;
+
+---
+## 5. Kmer multiplicity
+
+&lt;div style="text-align:center"&gt;
+&lt;img src="../imgs/kmer_multiplicity1.png" width=70% /&gt;
+&lt;/div&gt;
+
+---
+## 5. Kmer multiplicity
+
+&lt;div style="text-align:center"&gt;
+&lt;img src="../imgs/kmer_multiplicity2.png" width=70% /&gt;
+&lt;/div&gt;
+
+---
+## 6. Switch error rate
+
+&lt;div style="text-align:center"&gt;
+&lt;img src="../imgs/switch1.png" width=70% /&gt;
+
+&lt;img src="../imgs/switch2.png" width=70% /&gt;
+&lt;/div&gt;
+
+---
+## 
+
+&lt;div style="font-size:30px;background-image: url('../imgs/bg.png'); background-repeat:no-repeat; background-size: 796px; text-align:center; height=600px; padding:200px 0 400px 0" width=100%&gt;&lt;b&gt;Genome assembly:&lt;br/&gt;Applications&lt;/b&gt;&lt;/div&gt;
+
+---
+## Applications
+
+&lt;div style="text-align:center"&gt;
+&lt;img src="../imgs/applications_long_reads.png" width=100% /&gt;
+&lt;/div&gt;
+
+---
+## Contiguity matters
+
+&lt;div style="text-align:center"&gt;
+&lt;img src="../imgs/contiguity.png" width=80% /&gt;
+&lt;/div&gt;
+
+---
+## Contiguity matters
+
+
+Differences between two humans:
+
+&lt;img src="../imgs/human_SVs.png" width=100% /&gt;
+
+Human-chimp differences (120 Mb overall):
+
+3x10^7 substitutions → 30 Mb (25%)
+
+5x10^6 indels (&lt;80 bp) → 22 Mb (18%)
+
+7x10^4 SVs (&gt;80 bp) → 68 Mb (57%)
+
+---
+## Whole genome alignments
+
+&lt;img src="../imgs/chicken_barn_swallow.png" width=100% /&gt;
+
+---
+## Whole genome alignments
+
+&lt;div style="text-align:center"&gt;
+&lt;img src="../imgs/chicken_zebra_finch.png" width=50% /&gt;
+&lt;/div&gt;
+
+---
+## Supergenes in the ruff
+
+&lt;img src="../imgs/ruff.png" width=100% /&gt;
+
+&lt;div style="text-align:center"&gt;
+&lt;a href="https://www.nature.com/articles/ng.3443"&gt;Küpper et al., 2015&lt;/a&gt;
+&lt;br /&gt;&lt;br /&gt;&lt;br /&gt;
+&lt;a href="https://www.scilifelab.se/news/a-supergene-underlies-genetic-differences-in-testosteron-levels-and-sexual-behaviour-in-male-ruff/"&gt;Watch this video!&lt;/a&gt;
+&lt;/div&gt;
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
