@@ -378,6 +378,64 @@ Long-range interactions. Used also to reconstruct the 3D structure of DNA.
 ---
 ## 
 
+<div style="font-size:30px;background-image: url('../imgs/bg.png'); background-repeat:no-repeat; background-size: 796px; text-align:center; height=600px; padding:200px 0 400px 0" width=100%><b>Genome assembly:<br/>Applications</b></div>
+
+---
+## Applications
+
+<div style="text-align:center">
+<img src="../imgs/applications_long_reads.png" width=100% />
+</div>
+
+---
+## Contiguity matters
+
+<div style="text-align:center">
+<img src="../imgs/contiguity.png" width=80% />
+</div>
+
+---
+## Contiguity matters
+
+
+Differences between two humans:
+
+<img src="../imgs/human_SVs.png" width=100% />
+
+Human-chimp differences (120 Mb overall):
+
+3x10^7 substitutions → 30 Mb (25%)
+
+5x10^6 indels (<80 bp) → 22 Mb (18%)
+
+7x10^4 SVs (>80 bp) → 68 Mb (57%)
+
+---
+## Whole genome alignments
+
+<img src="../imgs/chicken_barn_swallow.png" width=100% />
+
+---
+## Whole genome alignments
+
+<div style="text-align:center">
+<img src="../imgs/chicken_zebra_finch.png" width=50% />
+</div>
+
+---
+## Supergenes in the ruff
+
+<img src="../imgs/ruff.png" width=100% />
+
+<div style="text-align:center">
+<a href="https://www.nature.com/articles/ng.3443">Küpper et al., 2015</a>
+<br /><br /><br />
+<a href="https://www.scilifelab.se/news/a-supergene-underlies-genetic-differences-in-testosteron-levels-and-sexual-behaviour-in-male-ruff/">Watch this video!</a>
+</div>
+
+---
+## 
+
 <div style="font-size:30px;background-image: url('../imgs/bg.png'); background-repeat:no-repeat; background-size: 796px; text-align:center; height=600px; padding:200px 0 400px 0" width=100%><b>Genome assembly:<br/>Principles and practicalities</b></div>
 
 ---
@@ -666,62 +724,4 @@ Picking a random human gene, the Primary Assembly normally refers to the human g
 <img src="../imgs/switch1.png" width=70% />
 
 <img src="../imgs/switch2.png" width=70% />
-</div>
-
----
-## 
-
-<div style="font-size:30px;background-image: url('../imgs/bg.png'); background-repeat:no-repeat; background-size: 796px; text-align:center; height=600px; padding:200px 0 400px 0" width=100%><b>Genome assembly:<br/>Applications</b></div>
-
----
-## Applications
-
-<div style="text-align:center">
-<img src="../imgs/applications_long_reads.png" width=100% />
-</div>
-
----
-## Contiguity matters
-
-<div style="text-align:center">
-<img src="../imgs/contiguity.png" width=80% />
-</div>
-
----
-## Contiguity matters
-
-
-Differences between two humans:
-
-<img src="../imgs/human_SVs.png" width=100% />
-
-Human-chimp differences (120 Mb overall):
-
-3x10^7 substitutions → 30 Mb (25%)
-
-5x10^6 indels (<80 bp) → 22 Mb (18%)
-
-7x10^4 SVs (>80 bp) → 68 Mb (57%)
-
----
-## Whole genome alignments
-
-<img src="../imgs/chicken_barn_swallow.png" width=100% />
-
----
-## Whole genome alignments
-
-<div style="text-align:center">
-<img src="../imgs/chicken_zebra_finch.png" width=50% />
-</div>
-
----
-## Supergenes in the ruff
-
-<img src="../imgs/ruff.png" width=100% />
-
-<div style="text-align:center">
-<a href="https://www.nature.com/articles/ng.3443">Küpper et al., 2015</a>
-<br /><br /><br />
-<a href="https://www.scilifelab.se/news/a-supergene-underlies-genetic-differences-in-testosteron-levels-and-sexual-behaviour-in-male-ruff/">Watch this video!</a>
 </div>
