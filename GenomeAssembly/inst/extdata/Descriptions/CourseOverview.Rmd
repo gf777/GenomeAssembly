@@ -14,12 +14,12 @@
 <br>
 
 ### Overview
-?? This Section is used to build the course website ?? 
+This is a 6-hour course on Genome Sequencing and Assembly held at the Rockefeller University in March 2021.
 
-?? What is this course about??
+There are no system requirements for this course and all practical exercises will be performed using Galaxy.
+Please create your <a href="https://usegalaxy.eu/">free Galaxy account</a> before the course begins. You can find extensive documentation on Galaxy <a href="https://usegalaxy.eu/training-material/">here</a>.
+The exercize can be found <a href="">here</a>.
 
-?? Break down of course structure. You can look here for guidance: https://rockefelleruniversity.github.io/Intro_To_R_1Day/?? 
-
-Course material and exercises are available to view as rendered HTML at https://rockefelleruniversity.github.io/RU_Course_template/.
+Course material and exercises are available to view as rendered HTML at https://rockefelleruniversity.github.io/GenomeAssembly/.
 All material is available to download under GPL v2 license.
 

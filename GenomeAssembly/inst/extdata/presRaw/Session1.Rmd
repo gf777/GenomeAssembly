@@ -598,10 +598,14 @@ Alignment-free approaches have been used for:
 
 <img src="../imgs/OLC_DBG1.png" width=100% />
 
+<a href="https://academic.oup.com/bfg/article/11/1/25/191455">Li et al. 2012</a>
+
 ---
 ## Assembling a genome today
 
 <img src="../imgs/OLC_DBG2.png" width=100% />
+
+<a href="https://academic.oup.com/bfg/article/11/1/25/191455">Li et al. 2012</a>
 
 ---
 ## Canu
@@ -609,6 +613,8 @@ Alignment-free approaches have been used for:
 <div style="text-align:center">
 <img src="../imgs/canu.png" width=50% />
 </div>
+
+<a href="https://genome.cshlp.org/content/early/2017/03/15/gr.215087.116">Koren et al. 2017</a>
 
 ---
 ## Galaxy
@@ -679,6 +685,11 @@ Picking a random human gene, the Primary Assembly normally refers to the human g
 ## 2. Contiguity
 
 <img src="../imgs/assembly3.png" width=100% />
+
+---
+## 2. Contiguity
+
+<img src="../imgs/assembly4.jpg" width=100% />
 
 ---
 ## 2. Quality (QV)

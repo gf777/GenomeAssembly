@@ -1,0 +1,70 @@
+First of all, create a Galaxy account in the US mirror https://usegalaxy.eu/
+
+##1. Get the data
+Now let's get started by downloading some HiFi data:
+
+ecoli	SRR10971019
+yeast	SRR13577846
+fly		SRR10238607
+
+Let's pick one (or all, but I suggest to start with ecoli) and in the tools search bar locate <i>Download and Extract Reads in FASTA/Q</i> (aka fastq-dump)
+! there is also fasterq-dump, which however doesn't work with hifi.
+! if you want to try the fly, make sure you download the reads as fastq (not fastq.gz).
+! See below, I rather suggest starting from the simpler ecoli or yeast.
+
+Select SRR accession and input one of the above IDs. 
+Leave the other parameters unchanged and execute.
+
+##2. Run QC
+Then we want to run some QC. In the tools search bar locate <i>FastQC</i>.
+Note that you don't have to wait for the download (or any other job) to finish to plan the next step!
+
+##3. Assemble it
+Now let's run <i>hifiasm</i> using the hifi reads we have downloaded (or are still downloading)
+!note: if you wish to assemble the fly, the dataset is very large so we first need to downsample it.
+First,run <i>Fastq to tabular</i> with default settings on the read set.
+Then since the data set is 25.8Gbp (from 1,057,390 reads) the coverage is about 25.8/0.175=147x.
+A typical hifi dataset is 30-40x so we can sample 2301518:147=x:35 -> 251759 reads to achieve the desidered coverage.
+Use the tool <i>Select random lines</i> on the tabular output then convert it back to fastq with <i>Tabular to FASTQ</i> using:
+Identifier column	1
+Sequence column	2
+Quality column	3
+You can run <i>FastQC</i> again on the downsampled reads to make sure everything looks good.
+
+##4. Collect general genome metrics
+While our assembly runs we can get some information on the genome parameters using kmers. 
+Run <i>khmer: Abundance Distribution (all-in-one)</i> using the raw reads as input. Make sure in the advanced options you set:
+kmer length = 21
+tablesize = 100000000
+
+In Galaxy we can manipulate files relatively easily, let's use awk to convert the output of khmer to a format suitable for Genomescope2.
+Search for <i>Text reformatting</i> (aka awk), select the output of khmer as input (the csv file), and type this as awk program:
+
+{FS = ","; if($2!=0 && NR>1) printf $1" "$2"\n"}
+
+Now you can download the results using the right bar. Then get to http://qb.cshl.edu/genomescope/genomescope2.0/
+You only need to upload the file you just downloaded as input, make sure to select the appropriate ploidy and submit.
+
+##5. Let's evaluate the assembly
+Use <i>GFA to FASTA</i> to convert both the primary and alternate assembly graphs to the more common fasta format.
+
+Once you have generated the fasta you can run <i>Fasta Statistics</i> on both the primary and the alternate.
+We could also <i>Compute sequence length</i> on the assembly and then generate an histogram <i></i>.
+
+Now let's locate <i>Busco</i> (v4) and run it on both the primary and alternate assembly. 
+Make sure you pick a reasonable classification for the species under consideration (e.g. Gammaproteobacteria for ecoli, Fungi for yeast, Insecta for the fly).
+
+##6. Compare!
+Now let's download the Genbank reference assembly for the same species, repeat the evaluation steps and compare the numbers.
+
+Let's also download some other genome that we are interested in, even larger ones, and run the evaluation steps on them.
+For instance we can navigate to the fly reference genome:
+https://www.ncbi.nlm.nih.gov/assembly/GCF_000001215.4
+Now click on <i>FTP directory for RefSeq assembly</i> in the right menu.
+Copy the link for the file named <i>GCF_000001215.4_Release_6_plus_ISO1_MT_genomic.fna.gz</i>
+In Galaxy click on <i>upload data</i> and then <i>paste/fetch data</i>, then paste the link to the assembly.
+
+Evaluate as many assemblies from different species as you like!
+Set them up at the same time so that you can just go and relax for a few hours and wait for the results.
+You can run fasta statistics and busco, but also genomescope on different raw data sets (illumina will work fine too).
+We will discuss the results together.
