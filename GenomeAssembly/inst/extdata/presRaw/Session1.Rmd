@@ -4,11 +4,6 @@ title: RU Genome Assembly, Session 1 <html><div style='float:left'></div><hr col
 author: "Rockefeller University, The Vertebrate Genome Lab"
 date: "http://rockefelleruniversity.github.io/RU_course_template/"
 output: 
-  xaringan::moon_reader:
-    nature:
-      highlightStyle: github
-      highlightLines: true
-      countIncrementalSlides: false
   html_document:
     toc: true # table of content true
     toc_float: yes
@@ -16,6 +11,11 @@ output:
     number_sections: false  ## if you want number sections at each table header
     theme: united  # many options for theme, this one is my favorite.
     highlight: tango  # specifies the syntax highlighting style
+  xaringan::moon_reader:
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
 params:
   isSlides: "no"
 ---
@@ -736,3 +736,8 @@ Picking a random human gene, the Primary Assembly normally refers to the human g
 
 <img src="../imgs/switch2.png" width=70% />
 </div>
+
+---
+## Many tools, one pipeline
+
+<img src="../imgs/GEP.png" width=100% />
