@@ -35,7 +35,7 @@ You can run <i>FastQC</i> again on the downsampled reads to make sure everything
 While our assembly runs we can get some information on the genome parameters using kmers. 
 Run <i>khmer: Abundance Distribution (all-in-one)</i> using the raw reads as input. Make sure in the advanced options you set:
 kmer length = 21
-tablesize = 100000000
+tablesize = 1000000000
 
 In Galaxy we can manipulate files relatively easily, let's use awk to convert the output of khmer to a format suitable for Genomescope2.
 Search for <i>Text reformatting</i> (aka awk), select the output of khmer as input (the csv file), and type this as awk program:
