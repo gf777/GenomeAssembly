@@ -1,4 +1,4 @@
-First of all, create a Galaxy account in the US mirror https://usegalaxy.eu/
+First of all, create a Galaxy account in the EU mirror https://usegalaxy.eu/
 
 ##1. Get the data
 Now let's get started by downloading some HiFi data:
