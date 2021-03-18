@@ -1,0 +1,137 @@
+---
+title: RU Genome Assembly, Session 2 <html><div style='float:left'></div><hr color='#EB811B'
+  size=1px width=796px></html>
+author: "Rockefeller University, The Vertebrate Genome Lab"
+date: "http://rockefelleruniversity.github.io/RU_course_template/"
+output: 
+  html_document:
+    toc: true # table of content true
+    toc_float: yes
+    depth: 3  # upto three depths of headings (specified by #, ## and ###)
+    number_sections: false  ## if you want number sections at each table header
+    theme: united  # many options for theme, this one is my favorite.
+    highlight: tango  # specifies the syntax highlighting style
+  xaringan::moon_reader:
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+params:
+  isSlides: "no"
+---
+
+```{r,include=FALSE}
+suppressPackageStartupMessages(require(knitr))
+knitr::opts_chunk$set(echo = TRUE, tidy = T)
+```
+
+<div style="font-size:30px;background-image: url('../imgs/bg.png'); background-repeat:no-repeat; background-size: 796px; text-align:center; height=600px; padding:200px 0 400px 0" width=100%><b>Genome assembly:<br/>Evaluation</b></div>
+
+---
+## Synopsis
+
+<ol>
+<li>Estimation of genome parameters (Genomescope)</li>
+<li>General assembly metrics (contiguity, quality)</li>
+<li>Assembly completeness (BUSCO)</li>
+<li>Structural accuracy</li>
+<li>Kmer multiplicity (false duplications, missing kmers)</li>
+<li>Switch rates</li>
+<li>WGA (D-Genies, Mummer, Cactus)</li>
+<ol>
+
+---
+## 1. Genome parameters
+
+Unrivalled software for assembly-free estimates is Genomescope (v2.0, 2020)
+
+<img src="../imgs/gs1.png" width=49% />
+<img src="../imgs/gs2.png" width=49% />
+
+---
+## What is a genome assembly?
+
+A genome assembly is the entire genomic sequence derived through a _de novo_ (i.e. reference-free) assembly process of the raw sequencing reads and released by the curators of the genome in the database upon publication.
+
+- Until now a single ‘reference’ individual or pooled individuals in a single reference.
+- Haploid.
+- Sometimes alternative alleles reported as variants.
+- Haplotigs were often completely shuffled as it is unfeasible to determine long blocks of haplotype with NGS.
+- Sometimes more than one assembly is present.
+
+---
+## The primary assembly
+
+The Primary Assembly constitutes what Genbank curators consider the most up-to-date source for the genomic sequence for this reference.
+
+When available, this is the first result being shown.
+
+Picking a random human gene, the Primary Assembly normally refers to the human genome assembly ‘GRCh38’ (Genome Reference Consortium human build n. 38), the latest release of the long list of high-quality assemblies for the human genome generated since 2001.
+
+<img src="../imgs/assembly1.png" width=100% />
+
+---
+## The primary assembly
+
+<img src="../imgs/assembly2.png" width=100% />
+
+---
+## 2. Contiguity
+
+<img src="../imgs/assembly3.png" width=100% />
+
+---
+## 2. Contiguity
+
+<img src="../imgs/assembly4.jpg" width=100% />
+
+---
+## 2. Quality (QV)
+
+<div style="text-align:center">
+<img src="../imgs/qv1.png" width=60% />
+
+<img src="../imgs/qv2.png" width=60% />
+</div>
+
+---
+## 3. BUSCO scores
+
+<div style="text-align:center">
+<img src="../imgs/busco.png" width=80% />
+</div>
+
+---
+## 4. Structural accuracy
+
+<div style="text-align:center">
+<img src="../imgs/hic2.png" width=70% />
+</div>
+
+---
+## 5. Kmer multiplicity
+
+<div style="text-align:center">
+<img src="../imgs/kmer_multiplicity1.png" width=70% />
+</div>
+
+---
+## 5. Kmer multiplicity
+
+<div style="text-align:center">
+<img src="../imgs/kmer_multiplicity2.png" width=70% />
+</div>
+
+---
+## 6. Switch error rate
+
+<div style="text-align:center">
+<img src="../imgs/switch1.png" width=70% />
+
+<img src="../imgs/switch2.png" width=70% />
+</div>
+
+---
+## Many tools, one pipeline
+
+<img src="../imgs/GEP.png" width=100% />
