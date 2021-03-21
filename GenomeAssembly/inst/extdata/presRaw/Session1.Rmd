@@ -212,7 +212,7 @@ The process of determining the sequence of an organism without existing referenc
 ---
 ## Repeats are a problem
 
-<img src="../imgs/Genbank2.png" width=800px />
+<img src="../imgs/repeats.png" width=800px />
 
 ---
 ## Third generation sequencing
